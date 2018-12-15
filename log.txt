@@ -1,0 +1,123 @@
+Here is a log of our progress for our project
+
+2018-10-23
+- Attached servo motors to string to pull board up/down, left/right
+- Cut wood stand and glued to the board, and glued motor (see figure 1)
+- Finished code in arduino to move motors according to joystick
+
+Future plans/Issues to Resolve:
+- Learn OpenCV, and integrate with arduino
+- How to prevent motors from turning too much? (possibly snapping string)
+- how to determine angle of the board?
+
+2018-10-24
+- Updated arduino code to control servo motors (up/down, left/right)
+- Created demo videos for board control
+- Downloaded and learned how to use OpenCV (Controlling webcam)
+- Started communication b/w arduino and computer
+
+Tasks to-do:
+- Learn more about OpenCV to track the movement of our marble
+- Integrate Computer and Arduino
+- Possible idea: Tracking angle of board from OpenCV (camera detecting angle)
+
+- So far: Can manually control the board with a joystick
+- Long-term Goal: Figure out algorithms to automate the process
+- Possible considerations: Shortest distance? Fastest time? Safest route?
+
+2018-11-08
+- Able to use openCV through C++ (Open camera, look at images, etc.)
+- Attempted to resolve communication issues between C++ and Arduino
+- Too many bugs and issues to try to communicate reliably with C++
+- Lot of time already wasted trying to fix issues in C++
+- Easier to switch to Python (with libraries available already)
+
+2018-11-11
+- Switched to Python
+- Downloaded libraries again for opencv, and also pyserial for serial comm.
+- Fixed library paths and linking issues
+- made sure OpenCV works (can open camera, change image to grayscale, etc.)
+- made sure that communication b/w Python code and Arduino works
+- Setting up for actually getting openCV to track ball
+- Hardware Stuff:
+- Painted marbles and board differnt colours; created stand for camera
+- PyCharm makes using libraries much easier!
+
+Next Steps:
+- Track the marble moving
+- Map out board in Python
+
+2018-11-16
+- Figured out how to calibrate image values, to find upper and lower bounds for RGB values
+- Figured out how to change images
+
+2018-11-17
+- figured out ball tracking through OpenCV
+- Could detect the pink marble, and circle the contour of the ball
+- Can follow the centre of mass
+
+2018-11-18
+- Hardware: Went to buy wood varnish to polish board and reduce friction
+- No more integration problems; camera w/ OpenCV to computer, to arduino works
+- Figured out position of centre of mass of ball; made tracker to follow it
+- Can now control arduino through 'wasd' keys on keyboard (no need for joystick)
+- Can detect whether or not ball is in motion relative to board
+
+2018-11-19
+- Issue: Marble used previously was not smooth (and didn't roll) went out to buy more marbles
+- New Issue: New marble is not a solid colour (but rolls!)
+- Fixed RGB Range, and repainted board to reflect new marble
+- Minor edits to readability and ease of use of files
+- Slight Issue: Tension in string needs to be recalibrated sometimes
+- Final note of the day: Currently blowdrying board so varnish dries faster (dries normally in 7 days! :O)
+
+Final Steps:
+- Determine velocity of ball, so we can move from point A to point B reliably
+	- Get board to adjust in the opposite direction to stop the ball around B
+- Determine relative position of ball in terms of the board
+	- currently, shifting angle of the board (with marble in same place) has a +/- 10 pixel change
+- determine "checkpoints" we want marble to reach on the board to get from start to end
+
+Real 2018-11-19 (Skipped a day somewhere in the past few days by accident)
+- Cross-compatability issues: Listener doesn't work in python (Mac OS is more restrictive w/ keys)
+- Re-calibrated ball and board/walls
+- Checked difference of marble in the same position with different tilt values
+	- difference in pixels is somewhat negligible (+/- 5 pixels)
+- Stored velocity and acceleration of marble in deque as well
+- Did some conditionals to make sure values that were too large (due to camera picking up noise) were ignored
+- Checked marble movement
+
+- Sad times: Error message suddenly popped up while testing marble movement
+	- Working perfectly fine beforehands (no changes in code)
+	- Suddenly, the .py file can no longer communicate with the arduino
+	- Similar issues with Mac; cannot communicate
+	- Possibly arduino fried? Motors dead?
+	- Hoping for the best tomorrow
+
+2018-11-20/21 (Final Days)
+- Figured out how to read velocity and acceleration of marble and adjust the board angles accordingly
+- Problem: Oscillates between two points (doesn't actually slow down and stop)
+- Wrote some stuff to stop the tilting sooner (so that it would slow down)
+- Also problem from other day just disappeared (arduino just overworked that day?)
+- finetuned the code to stop the balloon
+- Disaster almost struck; one of nails holding string together snapped off
+	- Renailed + Glue + Tape = Somewhat holding together
+- That's all for now folks
+
+Stuff we've learned this project
+- learned how to use opencv library, and multiple other ones (listener, serial, etc.)
+- Can detect and track the movement of the marble (based on its RGB values)
+- Can detect velocity and acceleration of marble
+- Can communicate from python program to the arduino
+- Can move motors with arduino commands
+- Some fun byte manipulation stuff (for better communication)
+- Had lots of fun with hardware (sawing wood, tying knots, glossing wood, etc.)
+- Overall, mostly enjoyable project (except for random errors and hardware constantly breaking down)
+- We learned a lot throughout this short period of time
+
+Ideas to fix project for later:
+- Definitely get a gyroscope, so determining the tilt of the board is easier
+	- Makes changing movement of marble much simpler as well
+- Set up a flashlight permanently to the board (don't need phones to light up board anymore)
+- Get a Raspberry Pi (better control, better libraries, less communication problems)
+
