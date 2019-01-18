@@ -120,4 +120,5 @@ Ideas to fix project for later:
 	- Makes changing movement of marble much simpler as well
 - Set up a flashlight permanently to the board (don't need phones to light up board anymore)
 - Get a Raspberry Pi (better control, better libraries, less communication problems)
+- Perhaps we need to do some standardization/normalization for camera
 
